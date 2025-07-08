@@ -39,3 +39,10 @@ Future<void> updateUser(String uid, String newName) async {
 
   await usersCollection.doc(uid).set({'Nombre': newName});
 }
+
+//Funcion para eliminar un usuario
+Future<void> deleteUser(String uid) async {
+  CollectionReference usersCollection = db.collection('Usuarios');
+
+  await usersCollection.doc(uid).delete();
+}

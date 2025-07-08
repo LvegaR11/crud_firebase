@@ -23,18 +23,76 @@ class _HomeState extends State<Home> {
               itemCount: snapshot.data?.length,
 
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(snapshot.data?[index]['Nombre']),
+                return Dismissible(
+                  onDismissed: (direction) async{
+                    await deleteUser(snapshot.data?[index]['uid']);
+                    snapshot.data?.removeAt(index);
+                  } ,
 
-                  onTap: (() async{
-                    await Navigator.pushNamed(context, '/edit', arguments: {
-                      'name': snapshot.data?[index]['Nombre'],
-                      'uid': snapshot.data?[index]['uid'],
-                    });
-                    setState(() {}); // Actualiza la lista de usuarios después de editar uno
-                  }),
+
+                  confirmDismiss: (direction) async {
+                    bool confirm = false;
+
+                    confirm = await showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text(
+                            "¿Estás seguro de que quieres eliminar a ${snapshot.data?[index]['Nombre']}?",
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context, false);
+                              },
+                              child: const Text(
+                                "Cancelar",
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () async {
+                                //await deleteUser(snapshot.data?[index]['uid']);
+                                Navigator.pop(context, true);
+                              },
+                              child: const Text("Si, Eliminar"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+
+                    return confirm;
+                  },
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.only(right: 20),
+                    child: const Icon(
+                      Icons.delete,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
+                  direction: DismissDirection.endToStart,
+                  key: Key(snapshot.data?[index]['uid']),
+                  child: ListTile(
+                    title: Text(snapshot.data?[index]['Nombre']),
+
+                    onTap: (() async {
+                      await Navigator.pushNamed(
+                        context,
+                        '/edit',
+                        arguments: {
+                          'name': snapshot.data?[index]['Nombre'],
+                          'uid': snapshot.data?[index]['uid'],
+                        },
+                      );
+                      setState(
+                        () {},
+                      ); // Actualiza la lista de usuarios después de editar uno
+                    }),
+                  ),
                 );
-                
               },
             );
           } else {
@@ -43,9 +101,11 @@ class _HomeState extends State<Home> {
         }),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async{
-         await Navigator.pushNamed(context, '/add');
-          setState(() {}); // Acrualiza la lista de usuarios después de agregar uno nuevo
+        onPressed: () async {
+          await Navigator.pushNamed(context, '/add');
+          setState(
+            () {},
+          ); // Acrualiza la lista de usuarios después de agregar uno nuevo
         },
 
         child: const Icon(Icons.add),
