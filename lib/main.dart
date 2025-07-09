@@ -1,5 +1,6 @@
 import 'package:crud_firebase/Pages/Agregar_usuarios_page.dart';
 import 'package:crud_firebase/Pages/Editar_usuarios_page.dart';
+import 'package:crud_firebase/Pages/Login_usuarios_page.dart';
 import 'package:crud_firebase/Pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -20,11 +21,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CRUD Firebase',
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: {
-        '/': (context) => const Home(),
-        '/add': (context) => const AgregarUsuarios(),
-        '/edit': (context) => const EditarUsuariosPage(),
+         '/': (context) => const Home(), // Lista de usuarios
+         '/login': (context) => const LoginPage(),
+         '/add': (context) => const AgregarUsuarios(),
+         '/edit': (context) => const EditarUsuariosPage(),
+
       },
     );
   }
