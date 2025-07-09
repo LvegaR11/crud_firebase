@@ -94,6 +94,26 @@ Future<void> login() async {
                 ),
                 child: const Text('Entrar'),
               ),
+              TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/recuperar');
+              },
+              child: const Text(
+                '¿Olvidaste tu contraseña?',
+                style: TextStyle(color: Color.fromARGB(255, 9, 9, 9)),
+              ),
+            ),
+              const SizedBox(height: 16),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/add');
+                },
+                child: const Text(
+                  '¿No tienes cuenta? Regístrate aquí',
+                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                ),
+              ),
+
             ],
           ),
         ),

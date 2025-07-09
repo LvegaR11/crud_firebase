@@ -27,7 +27,7 @@ android {
         applicationId = "com.codigocaorrecto.crud_firebase"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 19
+        minSdk = 21
         multiDexEnabled = true
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
