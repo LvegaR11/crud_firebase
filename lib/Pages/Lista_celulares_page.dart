@@ -52,7 +52,7 @@ class ListaCelularesPage extends StatelessWidget {
                       ),
                       leading: const Icon(
                         Icons.phone_android,
-                        color: Colors.deepPurple,
+                        color: Color.fromARGB(255, 93, 92, 94),
                       ),
                       title: Text(
                         '${c.marca} - ${c.sistemaOperativo}',
@@ -80,7 +80,7 @@ class ListaCelularesPage extends StatelessWidget {
         },
         icon: const Icon(Icons.add),
         label: const Text('Agregar celular'),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: const Color.fromARGB(255, 143, 142, 144),
       ),
     );
   }

@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
             },
             icon: const Icon(Icons.smartphone),
             label: const Text('Celulares'),
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: const Color.fromARGB(183, 230, 224, 224),
           ),
           const SizedBox(height: 12),
           FloatingActionButton(

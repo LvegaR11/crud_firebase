@@ -86,7 +86,7 @@ class _EditarCelularPageState extends State<EditarCelularPage> {
                 icon: const Icon(Icons.save),
                 label: const Text('Guardar Cambios'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
+                  backgroundColor: const Color.fromARGB(183, 230, 224, 224),
                   minimumSize: const Size.fromHeight(50),
                 ),
               ),
