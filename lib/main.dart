@@ -1,5 +1,7 @@
+import 'package:crud_firebase/Pages/Agregar_celulares_page.dart';
 import 'package:crud_firebase/Pages/Agregar_usuarios_page.dart';
 import 'package:crud_firebase/Pages/Editar_usuarios_page.dart';
+import 'package:crud_firebase/Pages/Lista_celulares_page.dart';
 import 'package:crud_firebase/Pages/Login_usuarios_page.dart';
 import 'package:crud_firebase/Pages/Recuperar_Password_page.dart';
 import 'package:crud_firebase/Pages/home_page.dart';
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
          '/add': (context) => const AgregarUsuarios(),
          '/edit': (context) => const EditarUsuariosPage(),
          '/recuperar': (context) => const RecuperarPasswordPage(),
+         '/celular': (context) => const AgregarCelularPage(),
+         '/celulares': (context) => const ListaCelularesPage(),
       },
     );
   }

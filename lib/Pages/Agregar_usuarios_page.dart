@@ -96,7 +96,7 @@ class _AgregarUsuariosState extends State<AgregarUsuarios> {
               icon: const Icon(Icons.save),
               label: const Text('Guardar Usuario'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(255, 189, 189, 189),
+                backgroundColor: const Color.fromARGB(183, 230, 224, 224),
                 minimumSize: const Size.fromHeight(50),
               ),
             ),

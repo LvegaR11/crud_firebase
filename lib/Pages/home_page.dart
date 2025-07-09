@@ -119,13 +119,31 @@ class _HomeState extends State<Home> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await Navigator.pushNamed(context, '/add');
-          setState(() {});
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          FloatingActionButton.extended(
+            heroTag: 'btnCelulares',
+            onPressed: () {
+              Navigator.pushNamed(context, '/celulares');
+            },
+            icon: const Icon(Icons.smartphone),
+            label: const Text('Celulares'),
+            backgroundColor: Colors.deepPurple,
+          ),
+          const SizedBox(height: 12),
+          FloatingActionButton(
+            heroTag: 'btnAgregarUsuario',
+            onPressed: () async {
+              await Navigator.pushNamed(context, '/add');
+              setState(() {});
+            },
+            child: const Icon(Icons.person_add),
+          ),
+        ],
       ),
     );
+    
   }
 }

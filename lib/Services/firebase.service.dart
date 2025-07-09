@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crud_firebase/Model/Celulares.dart';
 
 FirebaseFirestore db = FirebaseFirestore.instance;
 
@@ -62,3 +63,42 @@ Future<void> deleteUser(String uid) async {
 
   await usersCollection.doc(uid).delete();
 }
+
+
+//Funcion para agregar un celular
+Future<void> addCelular(Celular celular) async {
+  await FirebaseFirestore.instance
+      .collection('celulares')
+      .add(celular.toMap());
+}
+
+//Funcion para obtener todos los celulares
+Stream<List<Celular>> getCelulares() {
+  return FirebaseFirestore.instance
+      .collection('celulares')
+      .snapshots()
+      .map((snapshot) {
+        return snapshot.docs.map((doc) {
+          try {
+            return Celular.fromMap(doc.data(), doc.id);
+          } catch (e) {
+            return null;
+          }
+        }).whereType<Celular>().toList();
+      });
+}
+
+
+//Funcion para editar un celular
+Future<void> updateCelular(String id, Celular celular) async {
+  await FirebaseFirestore.instance
+      .collection('celulares')
+      .doc(id)
+      .update(celular.toMap());
+}
+
+//Funcion para eliminar un celular
+Future<void> deleteCelular(String id) async {
+  await FirebaseFirestore.instance.collection('celulares').doc(id).delete();
+}
+
